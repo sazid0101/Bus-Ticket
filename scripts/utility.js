@@ -9,8 +9,7 @@ for(const seat of mySeat){
        //selected seat update in the right side.
        const seatName = event.target.innerText ;
        const seatPrice = "550 tk" ;
-       console.log(seatName)
-       console.log(seatPrice)
+
        const selectedContainer = document.getElementById("selected-seat-container");
 
        const li = document.createElement("li");
@@ -27,15 +26,12 @@ for(const seat of mySeat){
        li.appendChild(p2)
 
        selectedContainer.appendChild(li)
-       
+
        //total price update...
-       const totalCostStr = document.getElementById("total-price").innerText ;
-
-       const totalCost = parseInt(totalCostStr);
-       const totalPrice = totalCost + parseInt(seatPrice)
-
-    //    document.getElementById("total-price").innerText = totalPrice
-    setInnerText("total-price", totalPrice)
+       totalPrice("total-price",parseInt(seatPrice))
+       
+     grandTotal("grand-total", parseInt(seatPrice))
+    
 
        setInnerText("seat-count", selectedSeat);  //function call, id & value
     })
@@ -44,3 +40,49 @@ for(const seat of mySeat){
 function setInnerText(id,value){
     document.getElementById(id).innerText = value ;  //this function is for set inner text.
 }
+
+//total price update...
+function totalPrice(id,value){
+    const totalCostStr = document.getElementById(id).innerText ;
+
+const totalCost = parseInt(totalCostStr);
+const totalPrice = totalCost + parseInt(value)
+//    document.getElementById("total-price").innerText = totalPrice
+setInnerText("total-price", totalPrice)
+}
+
+  //grand total
+ function grandTotal(category){
+    const grandTotalStr = document.getElementById("total-price").innerText;
+    const grandTotal = parseInt(grandTotalStr);
+    
+    if(category == "couple20" ){
+        setInnerText("grand-total", ((grandTotal / 100)* 80))
+    }else if(category == "NEW15"){
+        setInnerText("grand-total", ((grandTotal / 100)* 85))
+    }else{
+        setInnerText("grand-total", grandTotal)
+    }
+
+    
+ }
+
+// function grandTotal(category){
+//     const grandTotalStr = document.getElementById("total-price").innerText;
+//     const grandTotal = parseInt(grandTotalStr);
+    
+//    document.getElementById("apply-btn").addEventListener("click",function(){
+//     checkCondition("NEW15","couple 20")
+//    function checkCondition(){
+//     if(category == "couple20" ){
+//         setInnerText("grand-total", (grandTotal * 0.8))
+//     }else if(category == "NEW15"){
+//         setInnerText("grand-total", ((grandTotal / 100)* 85))
+//     }else{
+//         setInnerText("grand-total", grandTotal)
+//     }
+//    }
+//    })
+
+    
+//  }
