@@ -6,6 +6,7 @@ for(const seat of mySeat){
     seat.addEventListener("click", function(event){
        selectedSeat++
 
+       //selected seat update in the right side.
        const seatName = event.target.innerText ;
        const seatPrice = "550 tk" ;
        console.log(seatName)
@@ -27,6 +28,14 @@ for(const seat of mySeat){
 
        selectedContainer.appendChild(li)
        
+       //total price update...
+       const totalCostStr = document.getElementById("total-price").innerText ;
+
+       const totalCost = parseInt(totalCostStr);
+       const totalPrice = totalCost + parseInt(seatPrice)
+
+    //    document.getElementById("total-price").innerText = totalPrice
+    setInnerText("total-price", totalPrice)
 
        setInnerText("seat-count", selectedSeat);  //function call, id & value
     })
