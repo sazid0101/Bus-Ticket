@@ -1,10 +1,13 @@
 //when seat clicks seat number will increase
 const mySeat = document.getElementsByClassName("seat")
+
 let selectedSeat = 0;
 
 for(const seat of mySeat){
     seat.addEventListener("click", function(event){
+        
        selectedSeat++
+       seat.classList.add('bg-green-500')
 
        //selected seat update in the right side.
        const seatName = event.target.innerText ;
@@ -34,6 +37,10 @@ for(const seat of mySeat){
     
 
        setInnerText("seat-count", selectedSeat);  //function call, id & value
+       const fixedSeat = document.getElementById("fixed-seat").innerText ;
+       document.getElementById("fixed-seat").innerText = fixedSeat-1
+
+       console.log(fixedSeat)
     })
 }
 
@@ -63,8 +70,6 @@ setInnerText("total-price", totalPrice)
     }else{
         setInnerText("grand-total", grandTotal)
     }
-
-    
  }
 
 // function grandTotal(category){
@@ -83,6 +88,5 @@ setInnerText("total-price", totalPrice)
 //     }
 //    }
 //    })
-
     
 //  }
