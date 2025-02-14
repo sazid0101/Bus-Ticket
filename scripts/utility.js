@@ -6,8 +6,18 @@ let selectedSeat = 0;
 for(const seat of mySeat){
     seat.addEventListener("click", function(event){
         
-       selectedSeat++
-       seat.classList.add('bg-green-500')
+        event.target.setAttribute("disabled", "true");
+       if(selectedSeat>= 4){
+        alert("you already selected 4 seats")
+        return
+       }else{
+        if(!seat.classList.contains('selected')){
+            selectedSeat++;
+                seat.classList.add('selected');
+                seat.classList.add('bg-green-500');
+                return
+        }
+       }
 
        //selected seat update in the right side.
        const seatName = event.target.innerText ;
@@ -37,10 +47,11 @@ for(const seat of mySeat){
     
 
        setInnerText("seat-count", selectedSeat);  //function call, id & value
+      //decrease seat from total40 seat.
        const fixedSeat = document.getElementById("fixed-seat").innerText ;
        document.getElementById("fixed-seat").innerText = fixedSeat-1
 
-       console.log(fixedSeat)
+       
     })
 }
 
